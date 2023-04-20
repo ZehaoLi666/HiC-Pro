@@ -38,7 +38,8 @@ The script will change depending on restriction enzyme used to generate HiC libr
 ```
 python3 HICPRO_PATH/bin/utils/digest_genome.py -r ^GATC -o genome_files_dir/organism_genome_MboI.bed genome_files_dir/organism_genome.fasta
 ```
-## 6.	Modify config_hicpro.txt. The following are the recommended parameters to modify:
+## 6.	Modify config_hicpro.txt. 
+The following are the recommended parameters to modify:
 ```
 N_CPU = number of CPU cores  #  dependent on processor or cluster allocation
 SORT_RAM = RAM allocation    #  dependent on available RAM or cluster allocation
@@ -92,6 +93,7 @@ python3 plot_hicpro.py -ch genome_files_dir/organism_genome_MboI.bed
 -m hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample_iced.matrix -n
 ```
 # Selfish 
+
 Like the Hi-C pipeline tools, there are numerous tools available for differential interaction analysis. These tools utilize a wider variety of algorithms to identify differential interactions and some may not work with all organisms due to genome specific features.
 ## 1.	Counts per-million normalize the ICED normalized matrices.
 ```
