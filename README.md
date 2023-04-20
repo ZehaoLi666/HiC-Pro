@@ -67,7 +67,9 @@ hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample_iced.matrix = ICED
 hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample_iced.matrix.biases = per-bin biases within normalized data
 ```
 
-# Generate heatmaps – convert the .allValidPairs file to .hic format for use in Juicebox visualization tool or generate the heatmaps manually using the normalized .matrix output.
+# Generate heatmaps 
+
+Convert the .allValidPairs file to .hic format for use in Juicebox visualization tool or generate the heatmaps manually using the normalized .matrix output.
 ## 1.	Method 1 – visualize with Juicebox:
 ```
 Download juicertools .jar file - https://github.com/aidenlab/juicer/wiki/Download
