@@ -40,17 +40,17 @@ python3 HICPRO_PATH/bin/utils/digest_genome.py -r ^GATC -o genome_files_dir/orga
 ```
 ## 6.	Modify config_hicpro.txt. The following are the recommended parameters to modify:
 ```
-N_CPU = number of CPU cores; dependent on processor or cluster allocation
-SORT_RAM = RAM allocation; dependent on available RAM or cluster allocation
-MIN_MAPQ = quality cutoff for read mapping; a value of 30 ensures that any ambiguous reads are removed
+N_CPU = number of CPU cores  #  dependent on processor or cluster allocation
+SORT_RAM = RAM allocation    #  dependent on available RAM or cluster allocation
+MIN_MAPQ = quality cutoff for read mapping   # a value of 30 ensures that any ambiguous reads are removed
 BOWTIE2_IDX_PATH = path to bowtie2 indices generated from parent genome
 REFERENCE_GENOME = base name of reference genome
 GENOME_SIZE = path to tab-delimited file containing chromosome sizes
 GENOME_FRAGMENT = digested genome file from step 3
-LIGATION_SITE = ligation motif for restriction enzyme; usually duplicate of cut site
+LIGATION_SITE = ligation motif for restriction enzyme   # usually duplicate of cut site
 MboI cut site = GATC
 ligation motif = GATCGATC
-BIN_SIZE = binning resolution; dependent on number of fragments within digested genome, median length of digested fragments, number of aligned reads and several other factors.
+BIN_SIZE = binning resolution      # dependent on number of fragments within digested genome, median length of digested fragments, number of aligned reads and several other factors.
 #With a P. falciparum Hi-C library 10kb resolution is used if we have 10 million aligned and paired reads
 #The number of aligned reads is unknown until after running the pipeline; however, you can generally assume that 25-40% of sequenced reads will be available after processing a high-quality library.
 ```
