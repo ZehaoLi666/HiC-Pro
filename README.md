@@ -96,7 +96,7 @@ Like the Hi-C pipeline tools, there are numerous tools available for differentia
 ```
 python3 hic_CPM.py hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample_iced.matrix
 ```
-## 2.	Download and run Selfish - https://github.com/ay-lab/selfish
+## 2.	Download and run [Selfish](https://github.com/ay-lab/selfish)
 
 Sample 1 in this example should be the conditional and sample 2 is the control.
 ```	
