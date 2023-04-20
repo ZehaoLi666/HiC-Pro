@@ -9,7 +9,9 @@
 *	plot_selfish.py
 *	max_reads.py
 * create_sizes.py
+
 HiC-Pro – Although there are many available Hi-C processing pipelines, most use similar inputs (fastq files, chromosome sizes and restriction enzyme map), alignment tools (BWA or bowtie2), post-processing tools (Samtools) and normalization methods (KR or ICED). The outputs of these pipelines can often be converted to utilize other tools if necessary.
+
 # HiC-Pro
 ## 1.	Load HiC-Pro if using the cluster.
 ```
@@ -31,6 +33,7 @@ python3 create_sizes.py genome_files_dir/organism_genome.fasta
 bowtie2-build genome_files_dir/organism_genome.fasta genome_files_dir/organism_genome
 ```
 ## 5.	Use HiC-Pro utility to generate list of restriction fragments.
+
 The script will change depending on restriction enzyme used to generate HiC library.
 ```
 python3 HICPRO_PATH/bin/utils/digest_genome.py -r ^GATC -o genome_files_dir/organism_genome_MboI.bed genome_files_dir/organism_genome.fasta
@@ -92,6 +95,7 @@ Like the Hi-C pipeline tools, there are numerous tools available for differentia
 python3 hic_CPM.py hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample_iced.matrix
 ```
 ## 2.	Download and run Selfish - https://github.com/ay-lab/selfish
+
 Sample 1 in this example should be the conditional and sample 2 is the control.
 ```	
 selfish -m1 hic_dir/output_dir/hic_results/matrix/sample1/iced/10kb/sample1_iced_cpm.matrix
@@ -106,6 +110,7 @@ selfish -m1 hic_dir/output_dir/hic_results/matrix/sample1/iced/10kb/sample1_iced
 awk '(NR == 1) || (FNR > 1)' *_diff.txt  > sample1_sample2_diff.txt
 ```
 ## 4.	Plot differential heatmaps.
+
 The plotting script hasn’t been updated to include a help flag or verbosity. The three arguments are {1} sample name, {2} chromosome sizes file and {3} merged differential output from step 3.
 ```
 python3 plot_selfish.py sample1_sample2 genome_files_dir/organism_genome.sizes sample1_sample2_diff.txt
