@@ -1,4 +1,5 @@
-# Tools and scripts you will need for general HiC analysis:
+# Tools and scripts 
+
 *	HiC-Pro
 *	Selfish
 *	Juicebox/juicertools
