@@ -58,7 +58,8 @@ BIN_SIZE = binning resolution      # dependent on number of fragments within dig
 ```
 HiC-Pro -c hic_dir/config-hicpro.txt -i hic_dir/input_dir -o hic_dir/output_dir
 ```
-## 8.	Several output files will be generated. The following are a few of the most important files needed for downstream analysis, all other files can be deleted to save space:
+## 8.	Several output files will be generated. 
+The following are a few of the most important files needed for downstream analysis, all other files can be deleted to save space:
 ```
 hic_dir/output_dir/hic_results/data/sample/sample.allValidPairs = all paired and aligned reads after filtering
 hic_dir/output_dir/hic_results/matrix/sample/raw/10kb/sample.matrix = un-normalized read count matrix
