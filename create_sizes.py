@@ -1,11 +1,10 @@
-from sys import argv
+#!/usr/bin/env python3
 
-if len(argv) != 3:
-	print("Run with 2 arguments: input_filename.txt output_filename.wig")
-	exit(0)
-else:
-	pass
+import sys
+from Bio import SeqIO
 
-script, input_filename, output_filename 
-
-current_file = open(input_filename)
+g = SeqIO.parse(open(sys.argv[1]),"fasta")
+out = open((sys.argv[1]).replace("fasta","chrom.sizes"),"w")
+for i in g:
+	out.write(i.id + "\t" + str(len(i)) + "\n")
+out.close()
