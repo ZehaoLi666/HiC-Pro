@@ -18,28 +18,34 @@ HiC-Pro – Although there are many available Hi-C processing pipelines, most us
 ```
 module load hic-pro
 ```
-## 2.	Sort paired-end fastq files into folders by sample.
+## 2. Split reads in small chunks. 
+Because the raw data of HiC is usually very huge, to save time, we can split the fasta reads into small chunks to run it parallel.
+```
+split_reads.py --results_folder split_test/dixon_2M_split --nreads 50000 ./dixon_2M/SRR400264_00_R1.fastq.gz 
+```
+
+## 3.	Sort paired-end fastq files into folders by sample.
 ```
 hic_dir/input_dir/sample1/sample1_R1.fastq
 hic_dir/input_dir/sample1/sample1_R2.fastq
 hic_dir/input_dir/sample2/sample2_R1.fastq
 hic_dir/input_dir/sample2/sample2_R2.fastq
 ```
-## 3.	Generate file containing chromosome sizes.
+## 4.	Generate file containing chromosome sizes.
 ```
 python3 create_sizes.py genome_files_dir/organism_genome.fasta
 ```
-## 4.	Generate bowtie2 indices.
+## 5.	Generate bowtie2 indices.
 ```
 bowtie2-build genome_files_dir/organism_genome.fasta genome_files_dir/organism_genome
 ```
-## 5.	Use HiC-Pro utility to generate list of restriction fragments.
+## 6.	Use HiC-Pro utility to generate list of restriction fragments.
 
 The script will change depending on restriction enzyme used to generate HiC library.
 ```
 python3 HICPRO_PATH/bin/utils/digest_genome.py -r ^GATC -o genome_files_dir/organism_genome_MboI.bed genome_files_dir/organism_genome.fasta
 ```
-## 6.	Modify config_hicpro.txt. 
+## 7.	Modify config_hicpro.txt. 
 The following are the recommended parameters to modify:
 ```
 N_CPU = number of CPU cores  #  dependent on processor or cluster allocation
@@ -56,11 +62,12 @@ BIN_SIZE = binning resolution      # dependent on number of fragments within dig
 #With a P. falciparum Hi-C library 10kb resolution is used if we have 10 million aligned and paired reads
 #The number of aligned reads is unknown until after running the pipeline; however, you can generally assume that 25-40% of sequenced reads will be available after processing a high-quality library.
 ```
-## 7.	Run HiC-Pro.
+## 8	Run HiC-Pro.
 ```
-HiC-Pro -c hic_dir/config-hicpro.txt -i hic_dir/input_dir -o hic_dir/output_dir
+HiC-Pro -c hic_dir/config-hicpro.txt -i hic_dir/input_dir -o hic_dir/output_dir -p 
+# -p run HiC-Pro on cluster 
 ```
-## 8.	Several output files will be generated. 
+## 9	Several output files will be generated. 
 The following are a few of the most important files needed for downstream analysis, all other files can be deleted to save space:
 ```
 hic_dir/output_dir/hic_results/data/sample/sample.allValidPairs = all paired and aligned reads after filtering
