@@ -10,6 +10,7 @@
 *	plot_selfish.py
 *	max_reads.py
 * create_sizes.py
+* split_reads.py
 
 HiC-Pro – Although there are many available Hi-C processing pipelines, most use similar inputs (fastq files, chromosome sizes and restriction enzyme map), alignment tools (BWA or bowtie2), post-processing tools (Samtools) and normalization methods (KR or ICED). The outputs of these pipelines can often be converted to utilize other tools if necessary.
 
