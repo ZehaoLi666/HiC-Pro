@@ -99,15 +99,16 @@ hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample_iced.matrix.biases
 Convert the .allValidPairs file to .hic format for use in Juicebox visualization tool or generate the heatmaps manually using the normalized .matrix output.
 ## 1.	Method 1 – visualize with Juicebox:
 ```
-Download juicertools .jar file - https://github.com/aidenlab/juicer/wiki/Download
-Convert .allValidPairs file to .hic.
+# Download juicertools .jar file - https://github.com/aidenlab/juicer/wiki/Download
+wget https://github.com/...............    # find the last version 
+# Convert .allValidPairs file to .hic.
 sh HICPRO_PATH/bin/utils/hicpro2juicebox.sh
 -i hic_dir/output_dir/hic_results/data/sample/sample.allValidPairs
 -g genome_files_dir/organism_genome.sizes
 -j juicebox_dir/juicer_tools.jar
 -r genome_files_dir/organism_genome_MboI.bed
-Download juicebox  and import .hic file - https://github.com/aidenlab/Juicebox
 ```
+Then Download juicebox and import .hic file   - https://github.com/aidenlab/Juicebox
 ## 2.	Method 2 – manually generate heatmaps:
 Calculate max values for each chromosome for each sample so that samples could be directly compared.
 ```
