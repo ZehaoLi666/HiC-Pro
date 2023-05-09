@@ -108,6 +108,9 @@ sh HICPRO_PATH/bin/utils/hicpro2juicebox.sh
 -j juicebox_dir/juicer_tools.jar
 -r genome_files_dir/organism_genome_MboI.bed
 ```
+```
+sh hicpro2juicebox.sh -i ~/HiC_2/output2/hic_results/data/sample2/TL-VAR2-CSA_S15_L004_001.allValidPairs -g ~/HiC_2/genome/3D7.chrom.sizes -r ~/HiC_2/genome/3D7.bed -j ~/HiC_2/HiC-Pro/bin/utils/juicer_tools_1.22.01.jar
+```
 Then Download juicebox and import .hic file   - https://github.com/aidenlab/Juicebox
 ## 2.	Method 2 – manually generate heatmaps:
 Calculate max values for each chromosome for each sample so that samples could be directly compared.
