@@ -147,7 +147,8 @@ awk '(NR == 1) || (FNR > 1)' *_diff.txt  > sample1_sample2_diff.txt
 
 The plotting script hasn’t been updated to include a help flag or verbosity. The three arguments are {1} sample name, {2} chromosome sizes file and {3} merged differential output from step 3.
 ```
-python3 plot_selfish.py sample1_sample2 genome_files_dir/organism_genome.sizes sample1_sample2_diff.txt
+python3 plot_selfish.py `sample_chr1`  ~/HiC_2/3D7.chrom.sizes sample1_sample2_chr1_diff.txt
+`sample_chr1` is the name that you want to name your result file 
 ```
 # HiCCUPs Diff
 Hiccups Diff is similar to selfish, which is used to do differential interactions analysis. HiCCUPS Diff belongs to [Juicer Tools](https://github.com/aidenlab/juicer).
