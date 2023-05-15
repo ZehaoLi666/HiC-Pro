@@ -150,4 +150,6 @@ The plotting script hasn’t been updated to include a help flag or verbosity. T
 python3 plot_selfish.py sample1_sample2 genome_files_dir/organism_genome.sizes sample1_sample2_diff.txt
 ```
 # HiCCUPs Diff
-Hiccups Diff is similar to selfish, which is used to do differential interactions analysis. HiCCUPS Diff belongs to [Juicer Tools](https://github.com/aidenlab/juicer)
+Hiccups Diff is similar to selfish, which is used to do differential interactions analysis. HiCCUPS Diff belongs to [Juicer Tools](https://github.com/aidenlab/juicer).
+
+
