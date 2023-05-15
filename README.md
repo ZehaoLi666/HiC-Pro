@@ -131,6 +131,13 @@ python3 hic_CPM.py hic_dir/output_dir/hic_results/matrix/sample/iced/10kb/sample
 ## 2.	Download and run [Selfish](https://github.com/ay-lab/selfish)
 
 Sample 1 in this example should be the conditional and sample 2 is the control.
+creat a python environment and install selfish module first. 
+```
+conda create  --name `environemnt name` python=3.9
+conda activate `environemnt name`
+pip install selfish 
+```
+Put the [new selfish.py](https://github.com/ZehaoLi666/HiC-Pro/blob/main/selfish.py) into the selfish installtion directory. Because the orginal selfish.py is written for the human genome. Then run the command line below: 
 ```	
 selfish -m1 hic_dir/output_dir/hic_results/matrix/sample1/iced/10kb/sample1_iced_cpm.matrix
 -m2 hic_dir/output_dir/hic_results/matrix/sample2/iced/10kb/sample2_iced_cpm.matrix
@@ -145,9 +152,9 @@ awk '(NR == 1) || (FNR > 1)' *_diff.txt  > sample1_sample2_diff.txt
 ```
 ## 4.	Plot differential heatmaps.
 
-The plotting script hasn’t been updated to include a help flag or verbosity. The three arguments are {1} sample name, {2} chromosome sizes file and {3} merged differential output from step 3.
+[The plotting script](https://github.com/ZehaoLi666/HiC-Pro/blob/main/plot_selfish.py) hasn’t been updated to include a help flag or verbosity. The three arguments are {1} sample name, {2} chromosome sizes file and {3} merged differential output from step 3.
 ```
-python3 plot_selfish.py `sample_chr1`  ~/HiC_2/3D7.chrom.sizes sample1_sample2_chr1_diff.txt
+python3 plot_selfish.py  `sample_chr1`  ~/HiC_2/3D7.chrom.sizes sample1_sample2_chr1_diff.txt
 `sample_chr1` is the name that you want to name your result file 
 ```
 # HiCCUPs Diff
