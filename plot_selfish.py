@@ -21,8 +21,8 @@ for i in sizes.itertuples():
 	prev_size += i[3]
 
 df = pd.read_csv(sys.argv[3], sep='\t')
-df["bin1"] = df["bin1"] // res
-df["bin2"] = df["bin2"] // res
+df["LOC1_start"] = df["LOC1_start"] // res
+df["LOC2_start"] = df["LOC2_start"] // res
 
 if len(sys.argv) > 4:
 	cent = pd.read_csv(sys.argv[4], sep="\t", header=None)
@@ -35,29 +35,29 @@ if len(sys.argv) > 4:
 	gl[4] = gl[4]//res
 
 pdf = PdfPages('%s_%skb_diff.pdf' % (sample, res // 1000))
-df_inter = df[df.chr1 != df.chr2]
+df_inter = df[df.CHR1 != df.CHR2]
 if len(df_inter) > 1:
 	sizes_inter = sizes.copy()
 	starts = []
 	ends = []
 	start_index = 0
 	for i in sizes_inter.itertuples():
-		starts.append(start_index)
+		sarts.append(start_index)
 		start_index += i[3]
 	sizes_inter[1] = starts
 	sizes_inter[2] = sizes_inter[2] + sizes_inter[1] - 1
 
 	sizes_inter.columns = ["chr1", "start", "end"]
-	df_inter = df[df.chr1 != df.chr2]
-	df_inter = df_inter.merge(sizes_inter, on="chr1")
-	df_inter["bin1"] = df_inter["bin1"] + df_inter["start"]
+	df_inter = df[df.CHR1 != df.CHR2]
+	df_inter = df_inter.merge(sizes_inter, on="CHR1")
+	df_inter["LOC1_start"] = df_inter["LOC1_start"] + df_inter["start"]
 	df_inter.drop(["start", "end"], axis=1, inplace=True)
 
 	sizes_inter.columns = ["chr2", "start", "end"]
-	df_inter = df_inter.merge(sizes_inter, on="chr2")
-	df_inter["bin2"] = df_inter["bin2"] + df_inter["start"]
+	df_inter = df_inter.merge(sizes_inter, on="CHR2")
+	df_inter["LOC2_start"] = df_inter["LOC2_start"] + df_inter["start"]
 	df_inter.drop(["start", "end"], axis=1, inplace=True)
-	df_inter = df_inter[df_inter.chr1 != df_inter.chr2]
+	df_inter = df_inter[df_inter.CHR1 != df_inter.CHR2]
 
 	maxColor = min(heapq.nlargest(math.ceil(len(df_inter) * 0.10), abs(df_inter.log2FC)))
 
@@ -82,19 +82,19 @@ if len(df_inter) > 1:
 	pdf.savefig()
 	plt.close()
 
-df_intra = df[df.chr1 == df.chr2]
+df_intra = df[df.CHR1 == df.CHR2]
 ch = 1
-for i in df_intra.chr1.unique():
-	sdf = df_intra[df_intra.chr1 == i]
+for i in df_intra.CHR1.unique():
+	sdf = df_intra[df_intra.CHR1 == i]
 
 #	maxColor = min(heapq.nlargest(math.ceil(len(sdf) * 0.10), abs(sdf.log2FC)))
-	maxColor = max(sdf.log2FC)
+	maxColor = max(sdf.LOG_FOLD_CHANGE)
 
 	num = int(sizes.loc[sizes[0] == i][2].values)
 	arr = np.zeros((num,num))
 	for row in sdf.itertuples():
-		arr[int(row.bin1) - 1][int(row.bin2) - 1] = row.log2FC
-		arr[int(row.bin2) - 1][int(row.bin1) - 1] = row.log2FC
+		arr[int(row.LOC1_start) - 1][int(row.LOC2_start) - 1] = row.LOG_FOLD_CHANGE
+		arr[int(row.LOC2_start) - 1][int(row.LOC1_start) - 1] = row.LOG_FOLD_CHANGE
 	for j in range(0,len(arr)):
 		arr[j,j] = 0
 
