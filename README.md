@@ -157,7 +157,7 @@ awk '(NR == 1) || (FNR > 1)' *_diff.txt  > sample1_sample2_diff.txt
 python3 plot_selfish.py  `sample_chr1`  ~/HiC_2/3D7.chrom.sizes sample1_sample2_chr1_diff.txt
 # `sample_chr1` is the name that you want to name your result file 
 ```
-# HiCCUPs Diff
-Hiccups Diff is similar to selfish, which is used to do differential interactions analysis. HiCCUPS Diff belongs to [Juicer Tools](https://github.com/aidenlab/juicer).
+# [Fit-Hi-C](https://github.com/ay-lab/fithic)
+
 
 
